@@ -33,7 +33,7 @@ Blade::extend(function ($view, $compiler) {
 */
 Blade::extend(function ($view, $compiler) {
 
-    $pattern = $compiler->CreatePlainMatcher('lm-endattrs');
+    $pattern = '/(?<!\w)(\s*)@lm-endattrs\(\s*(.*)\)/';
 
     return preg_replace($pattern,
         '$1<?php echo \Complay\Menu\Builder::mergeStatic(ob_get_clean(), $lm_attrs); ?>$2',
