@@ -78,8 +78,8 @@ class Menu
                         foreach ($json as $menuTreeItem) {
                             $htmlAttr = $menuTreeItem['data'];
                             $uri = isset($htmlAttr['uri'])? $htmlAttr['uri']: '';
-                            //unset($htmlAttr['uri']);
                             $dataAttr = $this->prefixKeys($htmlAttr, 'data');
+                            unset($htmlAttr['uri']);
                             $attr = $htmlAttr + $dataAttr;
                             //
 
