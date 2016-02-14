@@ -25,11 +25,11 @@ class Navigation extends Model {
     }
 
     public function getObjectAttribute($value) {
-        return unserialize(gzuncompress($value));
+        return unserialize(pg_unescape_bytea(stream_get_contents($value)));
     }
 
     public function setObjectAttribute($value) {
-        $this->attributes['object'] = @gzcompress(@serialize($value), 9);
+        $this->attributes['object'] = pg_escape_bytea(serialize($value));
     }
 
 }
