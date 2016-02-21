@@ -361,7 +361,7 @@ class Builder
             $$key = $value;
         }
 
-        $secure = (isset($options['secure']) && $options['secure'] === true) ? true : false;
+        $secure = ((isset($options['secure']) && $options['secure'] === true) || (isset($this->conf['force_secure']) && $this->conf['force_secure'] === true)) ? true : false;
 
         if (is_array($url)) {
             if (self::isAbs($url[0])) {
