@@ -33,7 +33,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         // merge default configs
         $this->mergeConfigFrom(__DIR__.'/../config/views.php', 'laravel5-menu.views');
         $this->mergeConfigFrom(__DIR__.'/../config/settings.php', 'laravel5-menu');
-        $this->app->register('Illuminate\Html\HtmlServiceProvider');
+        $this->app->register('Collective\Html\HtmlServiceProvider');
         $this->app->bindShared('menu', function($app) {
 			return new Menu($app['config']->get('laravel5-menu'),$app['view'],$app['html'], $app['url']);
 		});
