@@ -85,7 +85,7 @@ class Collection extends BaseCollection
      *
      * @return Complay\Menu\Collection
      */
-    public function prepend($html)
+    public function prepend($html, $key = NULL)
     {
         $this->each(function ($item) use ($html) {
             $item->title = $html.$item->title;
