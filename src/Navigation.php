@@ -25,11 +25,19 @@ class Navigation extends Model {
     }
 
     public function getObjectAttribute($value) {
-        return unserialize(pg_unescape_bytea(stream_get_contents($value)));
+        if (config('database.default') == 'pgsql')
+            return unserialize(pg_unescape_bytea(stream_get_contents($value)));
+        else
+            return unserialize(gzuncompress($value));
+        
     }
 
     public function setObjectAttribute($value) {
-        $this->attributes['object'] = pg_escape_bytea(serialize($value));
+        if (config('database.default') == 'pgsql')
+            $this->attributes['object'] = pg_escape_bytea(serialize($value));
+        else
+            $this->attributes['object'] = @gzcompress(@serialize($value), 9);
+
     }
 
 }
