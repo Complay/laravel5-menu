@@ -1,6 +1,6 @@
 <?php namespace Complay\Menu;
 
-use Illuminate\Html\HtmlBuilder;
+use Collective\Html\HtmlBuilder;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Config\Repository;
 use Illuminate\View\Factory;
